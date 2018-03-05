@@ -4,6 +4,25 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import Alert from '../packages/alert/index.js'
+import Message from '../packages/message/index.js'
+import '../packages/theme-chalk/index.css'
+const components = [
+  Alert,
+  Message
+]
+
+const install = function (Vue, opts = {}) {
+  components.map(function (component) {
+    Vue.component(component.name, component)
+  })
+  Vue.prototype.$message = Message
+}
+// Vue.component(Alert.name, Alert)
+if (typeof window !== 'undefined') {
+  // 客户端运行
+  install(Vue)
+}
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

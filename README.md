@@ -1,6 +1,6 @@
 # develop-vue-component
 
-> Learn to develop plug-ins reference element
+> 参考element-ui，学习怎么编写vue插件
 
 ## Build Setup
 
