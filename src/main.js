@@ -6,10 +6,12 @@ import router from './router'
 
 import Alert from '../packages/alert/index.js'
 import Message from '../packages/message/index.js'
+import Notification from '../packages/notification/index.js'
 import '../packages/theme-chalk/index.css'
 const components = [
   Alert,
-  Message
+  Message,
+  Notification
 ]
 
 const install = function (Vue, opts = {}) {
@@ -17,6 +19,7 @@ const install = function (Vue, opts = {}) {
     Vue.component(component.name, component)
   })
   Vue.prototype.$message = Message
+  Vue.prototype.$notification = Notification
 }
 // Vue.component(Alert.name, Alert)
 if (typeof window !== 'undefined') {
