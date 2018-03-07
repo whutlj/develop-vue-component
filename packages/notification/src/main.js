@@ -62,33 +62,59 @@ typeArr.forEach(type => {
 })
 
 Notification.close = function (id, userClose) {
-  let len = instances.length
-  for (let i = 0 ; i < len; i++) {
-    if (instances[i].id === id) {
-      let height = instances[i].$el.offsetHeight + 16
-      instances.splice(i, 1)
-      if (typeof userClose === 'function') {
-        userClose(instances[i])
-      }
-      len = instances.length
-      for (let j = i; j < len; j++) {
-        let position = /^top-/.test(instances[j].position) ? 'top' : 'bottom' 
-        let instanceOffset = instances[j].verticalOffset - height
-        if (position === 'top') {
-          instances[j].$el.style.top = `${ instanceOffset }px`
-        } else {
-          instances[j].$el.style.bottom =  `${ instanceOffset }px`
-        }
-      }
-      //重新设置实例的位置
-      
+  
+  // let len = instances.length
+  // for (let i = 0 ; i < len; i++) {
+  //   if (instances[i].id === id) {
+  //     let height = instances[i].$el.offsetHeight + 16
+  //     let dlOption =  instances[i].position
+  //     if (typeof userClose === 'function') {
+  //       userClose(instances[i])
+  //     }
+  //     instances.splice(i, 1)
+  //     len = instances.length
+  //     for (let j = i; j < len; j++) {
+  //       if (dlOption === instances[j].position) {
+  //         let position = /^top-/.test(instances[j].position) ? 'top' : 'bottom' 
+  //         let instanceOffset = instances[j].verticalOffset - height
+  //         if (position === 'top') {
+  //           instances[j].$el.style.top = `${ instanceOffset }px`
+  //         } else {
+  //           instances[j].$el.style.bottom =  `${ instanceOffset }px`
+  //         }
+  //       }
+  //     }
+  //     //重新设置实例的位置
+  //   }
+  // }
+  
+  let index = -1
+  const len = instances.length
+  const instance = instances.filter((instance,i) => {
+    if (instance.id === id) {
+      index = i
+      return true
+    } else {
+      return false
     }
+  })[0]
+  if (!instance) return
+  if (typeof userClose === 'function') {
+    userClose(instance)
   }
+  instances.splice(index, 1)
+  if (len <= 1) return
+  const position = instance.position
+  const removeHeight 
+  for (let i = index; i < len - 1; i++) {
+    if (instances[i].option === )
+  }
+
 }
 
 Notification.closeAll = function () {
   for (let i = instances.length - 1; i >= 0; i++) {
-    instances[i],close()
+    instances[i].close()
   }
 }
 
