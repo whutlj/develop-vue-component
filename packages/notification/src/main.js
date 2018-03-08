@@ -72,18 +72,16 @@ Notification.close = function (id, userClose) {
   //       userClose(instances[i])
   //     }
   //     instances.splice(i, 1)
+  //     if (len <= 1) return
   //     len = instances.length
   //     for (let j = i; j < len; j++) {
   //       if (dlOption === instances[j].position) {
   //         let position = /^top-/.test(instances[j].position) ? 'top' : 'bottom' 
-  //         let instanceOffset = instances[j].verticalOffset - height
-  //         if (position === 'top') {
-  //           instances[j].$el.style.top = `${ instanceOffset }px`
-  //         } else {
-  //           instances[j].$el.style.bottom =  `${ instanceOffset }px`
-  //         }
+  //         let instanceOffset =parseInt(instances[j].vm.$el.style[instances[j].verticalProperty], 10) - height
+  //         instances[j].vm.$el.style[instances[j].verticalProperty] =  `${ instanceOffset }px` 
   //       }
   //     }
+  //     break
   //     //重新设置实例的位置
   //   }
   // }
@@ -105,11 +103,12 @@ Notification.close = function (id, userClose) {
   instances.splice(index, 1)
   if (len <= 1) return
   const position = instance.position
-  const removeHeight 
+  const removeHeight = instance.dom.offsetHeight
   for (let i = index; i < len - 1; i++) {
-    if (instances[i].option === )
+    if (instances[i].position === position) {
+      instances[i].dom.style[instances[i].verticalProperty] = parseInt(instances[i].dom.style[instances[i].verticalProperty], 10) - removeHeight - 16 + 'px'
+    }
   }
-
 }
 
 Notification.closeAll = function () {

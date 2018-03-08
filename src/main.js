@@ -7,11 +7,13 @@ import router from './router'
 import Alert from '../packages/alert/index.js'
 import Message from '../packages/message/index.js'
 import Notification from '../packages/notification/index.js'
+import Dialog from '../packages/dialog/index.js'
 import '../packages/theme-chalk/index.css'
 const components = [
   Alert,
   Message,
-  Notification
+  Notification,
+  Dialog
 ]
 
 const install = function (Vue, opts = {}) {

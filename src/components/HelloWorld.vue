@@ -4,6 +4,11 @@
     <el-alert type ="success" title="成功" description="这是描述"></el-alert>
     <button type="button" class="btn" @click="btnClick">点击</button>
     <button type="button" class="btn" @click="btnClickLeft">点击1</button>
+    <nr-dialog width="400px">
+      <div>1231</div>
+      <p>1231</p>
+    </nr-dialog>
+    <a href="https://www.newrank.cn/" target="_blank">去新榜</a>
   </div>
 </template>
 
@@ -32,20 +37,20 @@ export default {
       //   showClose: true,
       //   duration: 4000
       // })
-      _self.$notification({
-        title: '提示',
-        message: '这是信息',
-        duration: 1000,
-        type: 'success'
-        // position: 'bottom-left',
-        // offset: 200
+      _self.$message.success({
+        message: '这是小学',
+        showClose: true,
+        duration: 400000
       })
+      let componentName = 'name'
+      console.log(this.$parent)
+      console.log(this.$root)
     },
     btnClickLeft() {
       this.$notification({
         title: '提示',
         message: '这是信息',
-        duration: 1000,
+        // duration: 1000,
         type: 'success',
         position: 'top-left'
         // offset: 200

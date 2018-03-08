@@ -110,7 +110,7 @@ export default {
       }
     },
     destroyElement() {
-      this.$el.removeEventListener('transitoned', this.destroyElement);
+      this.$el.removeEventListener('transitioned', this.destroyElement);
       this.$destroy(true);
       this.$el.parentNode.removeChild(this.$el);
     },
